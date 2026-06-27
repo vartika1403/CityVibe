@@ -81,3 +81,9 @@ memory/test_credentials.md
 # Mobile development
 android-sdk/data/mysql/ib_logfile0
 data/mysql/ib_logfile0
+.env
+.env.*
+*.env
+credentials.json
+*.key
+.credentials
