@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CityVibe</string>
+    <string name="city_header">Events in Bengaluru</string>
+    <string name="tagline">Discover what\'s happening tonight</string>
+
+    <string name="chip_all">All</string>
+    <string name="chip_music">Music</string>
+    <string name="chip_comedy">Comedy</string>
+    <string name="chip_meetups">Meetups</string>
+
+    <string name="error_generic">Couldn\'t load events. Pull down to retry.</string>
+    <string name="empty_events">No events found in this category.</string>
+
+    <string name="book_now">Book Now</string>
+    <string name="about_venue">Venue</string>
+    <string name="about_event">About this event</string>
+    <string name="organizer_label">Hosted by</string>
+    <string name="duration_label">Duration</string>
+    <string name="cd_cover">Event cover image</string>
+</resources>
