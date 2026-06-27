@@ -27,7 +27,7 @@ client = httpx.AsyncClient(base_url=SPRING_BOOT_URL, timeout=30.0)
 
 
 @app.get("/api/health")
-async def health():
+async def health() -> dict[str, object]:
     try:
         r = await client.get("/api/events")
         return {"status": "ok", "spring_boot": "up", "events": len(r.json())}
@@ -39,8 +39,8 @@ async def health():
     "/api/{path:path}",
     methods=["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
 )
-async def proxy(path: str, request: Request):
-    url = f"/api/{path}"
+async def proxy(path: str, request: Request) -> Response:
+    url: str = f"/api/{path}"
     body = await request.body()
     headers = {k: v for k, v in request.headers.items() if k.lower() != "host"}
     upstream = await client.request(
