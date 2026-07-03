@@ -220,6 +220,13 @@ fun EventCard(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(170.dp)
+                // Compose equivalent of the bg_image_placeholder shape gradient,
+                // shown behind the image while it loads or if it fails.
+                .background(
+                    Brush.linearGradient(
+                        listOf(Color(0xFFE0E0EA), Color(0xFFCFCFDD))
+                    )
+                )
         ) {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
@@ -228,8 +235,6 @@ fun EventCard(
                     .build(),
                 contentDescription = stringResource(R.string.cd_cover),
                 contentScale = ContentScale.Crop,
-                placeholder = painterResource(R.drawable.bg_image_placeholder),
-                error = painterResource(R.drawable.bg_image_placeholder),
                 modifier = Modifier.fillMaxSize(),
             )
 
