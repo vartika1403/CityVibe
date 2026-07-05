@@ -36,6 +36,16 @@ venueAddress, organizer, price. Categories: Music, Comedy, Meetup, Gathering.
   cityvibe-android/dist/CityVibe-debug.apk.
 - Self-healing supervisor scripts so backend survives container recycling.
 
+## Implemented (2026-07-05)
+- Railway/Render deployment package in backend-springboot/: Dockerfile
+  (multi-stage), railway.json, render.yaml, DEPLOYMENT.md guide.
+- server.port now reads ${PORT:8080} (required by Railway/Render). Jar rebuilt,
+  preview re-verified (health ok, 8 events).
+- Hardened startup scripts with flock apt guard (fixes apt lock race that killed
+  MySQL on container restart).
+- User chose Railway for hosting. WAITING: user deploys and shares the Railway
+  URL; then update cityvibe-android .../util/Constants.kt BASE_URL and rebuild APK.
+
 ## Backlog / Next
 - P1: Search bar + multi-city support; date/relative formatting polish.
 - P1: Real RSVP persisted to backend (POST /api/events/{id}/rsvp).
