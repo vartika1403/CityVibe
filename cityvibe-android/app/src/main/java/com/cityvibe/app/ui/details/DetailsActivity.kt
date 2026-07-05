@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
+import coil.load
 import com.cityvibe.app.R
 import com.cityvibe.app.data.model.Event
 import com.cityvibe.app.databinding.ActivityDetailsBinding
@@ -78,12 +78,11 @@ class DetailsActivity : AppCompatActivity() {
         binding.tvCategory.backgroundTintList =
             android.content.res.ColorStateList.valueOf(Formatters.categoryColor(event.category))
 
-        Glide.with(this)
-            .load(event.imageUrl)
-            .placeholder(R.drawable.bg_image_placeholder)
-            .error(R.drawable.bg_image_placeholder)
-            .centerCrop()
-            .into(binding.ivCover)
+        binding.ivCover.load(event.imageUrl) {
+            placeholder(R.drawable.bg_image_placeholder)
+            error(R.drawable.bg_image_placeholder)
+            crossfade(true)
+        }
     }
 
     private fun showBookingConfirmation() {
