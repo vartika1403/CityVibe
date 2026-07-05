@@ -8,8 +8,12 @@ JAR=/app/backend-springboot/target/cityvibe-backend-1.0.0.jar
 # Install JDK + Maven if missing (apt packages are ephemeral in this env).
 if ! command -v java >/dev/null 2>&1; then
   export DEBIAN_FRONTEND=noninteractive
+  exec 9>/tmp/apt.lock
+  flock 9
+  dpkg --configure -a || true
   apt-get update -qq
   apt-get install -y -qq openjdk-17-jdk-headless maven
+  exec 9>&-
 fi
 
 # Build the jar if it does not exist yet.

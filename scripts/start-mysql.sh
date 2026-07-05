@@ -9,8 +9,12 @@ SOCKET=/run/mysqld/mysqld.sock
 # Install server if the binary is missing (apt packages are ephemeral here).
 if [ ! -x /usr/sbin/mariadbd ]; then
   export DEBIAN_FRONTEND=noninteractive
+  exec 9>/tmp/apt.lock
+  flock 9
+  dpkg --configure -a || true
   apt-get update -qq
   apt-get install -y -qq default-mysql-server
+  exec 9>&-
 fi
 
 mkdir -p "$DATADIR" /run/mysqld
