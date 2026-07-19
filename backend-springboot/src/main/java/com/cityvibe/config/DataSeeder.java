@@ -3,10 +3,13 @@ package com.cityvibe.config;
 import com.cityvibe.model.Event;
 import com.cityvibe.repository.EventRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+// Sample seed data is only loaded in the dev profile, never in production.
+@Profile("dev")
 @Component
 public class DataSeeder implements CommandLineRunner {
 

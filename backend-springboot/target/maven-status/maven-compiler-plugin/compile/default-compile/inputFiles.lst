@@ -1,6 +1,0 @@
-/app/backend-springboot/src/main/java/com/cityvibe/controller/EventController.java
-/app/backend-springboot/src/main/java/com/cityvibe/repository/EventRepository.java
-/app/backend-springboot/src/main/java/com/cityvibe/CityVibeApplication.java
-/app/backend-springboot/src/main/java/com/cityvibe/config/DataSeeder.java
-/app/backend-springboot/src/main/java/com/cityvibe/model/Event.java
-/app/backend-springboot/src/main/java/com/cityvibe/config/WebConfig.java

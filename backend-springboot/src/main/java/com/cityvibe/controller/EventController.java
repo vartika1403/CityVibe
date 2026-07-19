@@ -3,7 +3,6 @@ package com.cityvibe.controller;
 import com.cityvibe.model.Event;
 import com.cityvibe.repository.EventRepository;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+// CORS is configured centrally in WebConfig (app.cors.allowed-origins).
 @RestController
 @RequestMapping("/api/events")
-@CrossOrigin(origins = "*")
 public class EventController {
 
     private final EventRepository eventRepository;
