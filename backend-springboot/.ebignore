@@ -1,0 +1,18 @@
+# The presence of this file makes the EB CLI bundle THIS directory only
+# (not the parent monorepo / Android app) and skips git-based bundling.
+
+# Build output — rebuilt inside the Docker image on the EB instance
+target/
+
+# IDE / OS noise
+.idea/
+*.iml
+.DS_Store
+
+# Local logs and Ticketmaster exports
+*.log
+ticketmaster_*.json
+ticketmaster_*.csv
+
+# Local env files (never ship secrets)
+.env
