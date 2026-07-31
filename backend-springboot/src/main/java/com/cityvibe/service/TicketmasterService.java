@@ -136,7 +136,7 @@ public class TicketmasterService {
         String price = formatPrice(node.path("priceRanges").path(0));
 
         return new Event(title, category, description, imageUrl, dateTime,
-                null, venueName, venueAddress, organizer, price);
+                venueName, venueAddress, organizer, price);
     }
 
     private String firstImageUrl(JsonNode images) {

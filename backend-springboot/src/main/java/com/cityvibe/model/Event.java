@@ -13,6 +13,7 @@ public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="id")
     private Long id;
 
     @Column(nullable = false)
@@ -30,8 +31,6 @@ public class Event {
     // ISO-8601 string, e.g. "2026-07-15T19:30:00"
     private String dateTime;
 
-    private String duration;
-
     private String venueName;
 
     private String venueAddress;
@@ -44,14 +43,13 @@ public class Event {
     }
 
     public Event(String title, String category, String description, String imageUrl,
-                 String dateTime, String duration, String venueName, String venueAddress,
+                 String dateTime, String venueName, String venueAddress,
                  String organizer, String price) {
         this.title = title;
         this.category = category;
         this.description = description;
         this.imageUrl = imageUrl;
         this.dateTime = dateTime;
-        this.duration = duration;
         this.venueName = venueName;
         this.venueAddress = venueAddress;
         this.organizer = organizer;
@@ -75,9 +73,6 @@ public class Event {
 
     public String getDateTime() { return dateTime; }
     public void setDateTime(String dateTime) { this.dateTime = dateTime; }
-
-    public String getDuration() { return duration; }
-    public void setDuration(String duration) { this.duration = duration; }
 
     public String getVenueName() { return venueName; }
     public void setVenueName(String venueName) { this.venueName = venueName; }
