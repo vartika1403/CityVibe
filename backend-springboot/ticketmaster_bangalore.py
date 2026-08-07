@@ -4,10 +4,9 @@ Ticketmaster Discovery API helper for events near Bangalore.
 
 Uses only the Python standard library (urllib) so there is nothing to pip install.
 
-API key resolution order:
+API key resolution order (required — there is no built-in fallback):
   1. --apikey CLI flag
   2. TICKETMASTER_API_KEY environment variable
-  3. built-in fallback key
 
 Examples:
   # All events near Bangalore
@@ -47,7 +46,6 @@ from urllib.request import urlopen, Request
 from urllib.error import HTTPError, URLError
 
 API_URL = "https://app.ticketmaster.com/discovery/v2/events.json"
-FALLBACK_API_KEY = "FwjmAvjf148BIjHAbEcpe6VWb46WY63j"
 DEFAULT_CITY = "Bangalore"
 
 # Bangalore is IST = UTC+5:30 (no DST). Ticketmaster expects UTC datetimes.
@@ -66,7 +64,13 @@ PRESETS = {
 
 
 def resolve_api_key(cli_key):
-    return cli_key or os.environ.get("TICKETMASTER_API_KEY") or FALLBACK_API_KEY
+    key = cli_key or os.environ.get("TICKETMASTER_API_KEY")
+    if not key:
+        sys.exit(
+            "No Ticketmaster API key. Pass --apikey or set TICKETMASTER_API_KEY.\n"
+            "There is deliberately no hardcoded fallback: this file is public."
+        )
+    return key
 
 
 def utc_range_for_day(local_date):
