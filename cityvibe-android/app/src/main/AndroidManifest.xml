@@ -30,6 +30,12 @@
             android:parentActivityName=".ui.home.HomeActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".ui.createshow.CreateShowActivity"
+            android:parentActivityName=".ui.home.HomeActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
+
     </application>
 
 </manifest>

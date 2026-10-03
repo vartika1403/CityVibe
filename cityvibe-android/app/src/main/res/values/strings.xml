@@ -20,6 +20,7 @@
     <string name="cd_cover">Event cover image</string>
 
     <string name="cd_back">Back</string>
+    <string name="create_show">Create Show</string>
     <string name="create_your_show">Create your show</string>
     <string name="create_show_subtitle">Tell people what you\'re hosting</string>
     <string name="add_cover_image">Add a cover image</string>

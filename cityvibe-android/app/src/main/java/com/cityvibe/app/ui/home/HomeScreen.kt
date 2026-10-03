@@ -56,7 +56,7 @@ private val CATEGORIES = listOf("All", "Music", "Comedy", "Meetups")
 /**
  * Compose equivalent of activity_home.xml: gradient header, single-select
  * category filter chips, and a pull-to-refresh feed with loading / error /
- * empty states. Stateless — all state is hoisted to the caller.
+ * empty states, with a compact "Create Show" button in the header. Stateless — all state is hoisted to the caller.
  */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -67,6 +67,7 @@ fun HomeScreen(
     onCategorySelected: (String) -> Unit,
     onRefresh: () -> Unit,
     onEventClick: (Event) -> Unit,
+    onCreateShowClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -74,7 +75,7 @@ fun HomeScreen(
             .fillMaxSize()
             .background(CityVibeColors.Bg)
     ) {
-        Header()
+        Header(onCreateShowClick = onCreateShowClick)
 
         CategoryChips(
             selectedCategory = selectedCategory,
@@ -119,7 +120,7 @@ fun HomeScreen(
 }
 
 @Composable
-private fun Header() {
+private fun Header(onCreateShowClick: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -130,12 +131,16 @@ private fun Header() {
             )
             .padding(start = 20.dp, end = 20.dp, top = 44.dp, bottom = 22.dp)
     ) {
-        Text(
-            text = stringResource(R.string.app_name),
-            color = CityVibeColors.White,
-            fontSize = 30.sp,
-            fontWeight = FontWeight.Bold,
-        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text = stringResource(R.string.app_name),
+                color = CityVibeColors.White,
+                fontSize = 30.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.weight(1f),
+            )
+            CreateShowButton(onClick = onCreateShowClick)
+        }
         Text(
             text = stringResource(R.string.city_header),
             color = Color(0xFFFFE9E9),
@@ -148,6 +153,33 @@ private fun Header() {
             color = Color(0xCCFFFFFF),
             fontSize = 13.sp,
             modifier = Modifier.padding(top = 2.dp),
+        )
+    }
+}
+
+/** Small pill that sizes to its label, so it sits beside the title without crowding it. */
+@Composable
+private fun CreateShowButton(onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .clip(RoundedCornerShape(20.dp))
+            .background(CityVibeColors.White)
+            .clickable(onClick = onClick)
+            .padding(start = 10.dp, end = 12.dp, top = 6.dp, bottom = 6.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Icon(
+            painter = painterResource(R.drawable.ic_add),
+            contentDescription = null,
+            tint = CityVibeColors.BrandDark,
+            modifier = Modifier.size(16.dp),
+        )
+        Spacer(Modifier.width(4.dp))
+        Text(
+            text = stringResource(R.string.create_show),
+            color = CityVibeColors.BrandDark,
+            fontSize = 13.sp,
+            fontWeight = FontWeight.Bold,
         )
     }
 }
