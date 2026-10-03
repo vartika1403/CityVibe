@@ -2,9 +2,9 @@ package com.cityvibe.app.util
 
 object Constants {
 
-    // Hosted demo backend (Spring Boot API exposed via the Emergent ingress).
+    // Production backend (Spring Boot API deployed on Railway).
     // Works out-of-the-box on both the Android emulator and physical devices.
-    const val BASE_URL = "http://192.168.1.3:8080/"
+    const val BASE_URL = "https://cityvibe-backend-production.up.railway.app/"
 
     // ---- To run against a LOCAL Spring Boot instance instead ----
     // Start the backend in /app/backend-springboot (port 8090), then use:
