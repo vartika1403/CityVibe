@@ -2,6 +2,7 @@ package com.cityvibe.app.util
 
 import android.graphics.Color
 import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 
 object Formatters {
@@ -18,6 +19,10 @@ object Formatters {
             iso
         }
     }
+
+    /** Formats epoch millis as local ISO-8601 like "2026-07-18T19:00:00" — the shape [formatDateTime] parses. */
+    fun toIsoDateTime(millis: Long): String =
+        SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US).format(Date(millis))
 
     /** A solid accent color for each event category tag. */
     fun categoryColor(category: String?): Int = when (category?.lowercase()) {

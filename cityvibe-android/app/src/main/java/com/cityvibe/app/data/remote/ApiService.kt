@@ -1,7 +1,10 @@
 package com.cityvibe.app.data.remote
 
+import com.cityvibe.app.data.model.CreateShowRequest
 import com.cityvibe.app.data.model.Event
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -12,4 +15,7 @@ interface ApiService {
 
     @GET("api/events/{id}")
     suspend fun getEvent(@Path("id") id: Long): Event
+
+    @POST("api/events")
+    suspend fun createEvent(@Body request: CreateShowRequest): Event
 }

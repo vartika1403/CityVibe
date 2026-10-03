@@ -18,4 +18,27 @@
     <string name="organizer_label">Hosted by</string>
     <string name="duration_label">Duration</string>
     <string name="cd_cover">Event cover image</string>
+
+    <string name="cd_back">Back</string>
+    <string name="create_your_show">Create your show</string>
+    <string name="create_show_subtitle">Tell people what you\'re hosting</string>
+    <string name="add_cover_image">Add a cover image</string>
+    <string name="add_cover_image_hint">Tap to pick from your gallery</string>
+    <string name="change_image">Change</string>
+    <string name="remove_image">Remove</string>
+    <string name="label_image_url">Or paste an image URL</string>
+    <string name="hint_image_url">https://…</string>
+    <string name="label_show_name">Show name</string>
+    <string name="label_about">What\'s it about?</string>
+    <string name="label_description">Description</string>
+    <string name="hint_description">What can people expect?</string>
+    <string name="label_time">Date &amp; time</string>
+    <string name="hint_time">Pick a date and time</string>
+    <string name="label_duration">Duration</string>
+    <string name="hint_duration">e.g. 2 hours</string>
+    <string name="label_city">City</string>
+    <string name="label_price">Price (₹)</string>
+    <string name="hint_price">0 for a free show</string>
+    <string name="submit_show">Submit show</string>
+    <string name="show_submitted_title">Show submitted</string>
 </resources>
