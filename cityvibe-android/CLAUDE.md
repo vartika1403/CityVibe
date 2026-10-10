@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-CityVibe Android is a native Kotlin app (package `com.cityvibe.app`) that lists events in Bengaluru and shows event details. It follows MVVM with Retrofit networking. This directory (`cityvibe-android`) is one module of a larger monorepo that also contains a Spring Boot backend (`../backend-springboot`), a separate `../backend`, and a `../frontend`.
+CityVibe Android is a native Kotlin app (package `com.cityvibe.application`) that lists events in Bengaluru and shows event details. It follows MVVM with Retrofit networking. This directory (`cityvibe-android`) is one module of a larger monorepo that also contains a Spring Boot backend (`../backend-springboot`), a separate `../backend`, and a `../frontend`.
 
 ## Commands
 
@@ -16,7 +16,7 @@ CityVibe Android is a native Kotlin app (package `com.cityvibe.app`) that lists 
 ./gradlew connectedAndroidTest   # instrumented tests (requires a device/emulator)
 ```
 
-Run a single unit test class: `./gradlew test --tests "com.cityvibe.app.SomeTest"`.
+Run a single unit test class: `./gradlew test --tests "com.cityvibe.application.SomeTest"`.
 
 Note: there are currently no test source sets (`app/src/test` / `app/src/androidTest` do not exist yet); the test commands are no-ops until tests are added.
 
@@ -39,7 +39,7 @@ Layered MVVM with one-way data flow. UI observes `LiveData<Resource<T>>`; ViewMo
 
 ## Backend URL
 
-Configured by `BASE_URL` in `app/src/main/java/com/cityvibe/app/util/Constants.kt`. Defaults to the hosted demo API. To target a local Spring Boot instance (port 8090), use `http://10.0.2.2:8090/` on the emulator. Cleartext for `10.0.2.2`/`localhost` is already permitted via `res/xml/network_security_config.xml`.
+Configured by `BASE_URL` in `app/src/main/java/com/cityvibe/application/util/Constants.kt`. Defaults to the hosted demo API. To target a local Spring Boot instance (port 8090), use `http://10.0.2.2:8090/` on the emulator. Cleartext for `10.0.2.2`/`localhost` is already permitted via `res/xml/network_security_config.xml`.
 
 ## Tech
 

@@ -1,4 +1,4 @@
-package com.cityvibe.app.util
+package com.cityvibe.application.util
 
 import android.graphics.Color
 import java.text.SimpleDateFormat

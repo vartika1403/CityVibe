@@ -1,4 +1,4 @@
-package com.cityvibe.app.data.model
+package com.cityvibe.application.data.model
 
 /**
  * Body of `POST api/events` — the show a user submits from the Create Show screen.

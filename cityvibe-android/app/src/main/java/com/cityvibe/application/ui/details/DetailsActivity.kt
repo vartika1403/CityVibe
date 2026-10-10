@@ -1,15 +1,19 @@
-package com.cityvibe.app.ui.details
+package com.cityvibe.application.ui.details
 
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import coil.load
-import com.cityvibe.app.R
-import com.cityvibe.app.data.model.Event
-import com.cityvibe.app.databinding.ActivityDetailsBinding
-import com.cityvibe.app.util.Formatters
-import com.cityvibe.app.util.Resource
+import com.cityvibe.application.R
+import com.cityvibe.application.data.model.Event
+import com.cityvibe.application.databinding.ActivityDetailsBinding
+import com.cityvibe.application.ui.enableCityVibeEdgeToEdge
+import com.cityvibe.application.util.Formatters
+import com.cityvibe.application.util.Resource
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class DetailsActivity : AppCompatActivity() {
@@ -19,9 +23,11 @@ class DetailsActivity : AppCompatActivity() {
     private var currentEvent: Event? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableCityVibeEdgeToEdge()
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        padBottomBarForNavigationBar()
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -37,6 +43,17 @@ class DetailsActivity : AppCompatActivity() {
         viewModel.loadEvent(eventId)
 
         binding.btnBook.setOnClickListener { showBookingConfirmation() }
+    }
+
+    /** Keeps the Book Now bar's background under the nav bar but its button above it. */
+    private fun padBottomBarForNavigationBar() {
+        val bar = binding.bottomBar
+        val basePadding = bar.paddingBottom
+        ViewCompat.setOnApplyWindowInsetsListener(bar) { view, insets ->
+            val navBar = insets.getInsets(WindowInsetsCompat.Type.navigationBars())
+            view.updatePadding(bottom = basePadding + navBar.bottom)
+            insets
+        }
     }
 
     private fun observeViewModel() {

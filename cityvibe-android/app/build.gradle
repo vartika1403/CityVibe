@@ -3,20 +3,42 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+// Release signing comes from keystore.properties (never committed; see keystore.properties.example).
+// Without it, bundleRelease still builds but the output is unsigned and Play won't accept it.
+def keystorePropertiesFile = rootProject.file('keystore.properties')
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystorePropertiesFile.withInputStream { keystoreProperties.load(it) }
+}
+
 android {
-    namespace 'com.cityvibe.app'
-    compileSdk 34
+    namespace 'com.cityvibe.application'
+    compileSdk 36
 
     defaultConfig {
-        applicationId "com.cityvibe.app"
+        applicationId "com.cityvibe.application"
         minSdk 24
-        targetSdk 34
+        targetSdk 36
         versionCode 1
         versionName "1.0"
     }
 
+    signingConfigs {
+        release {
+            if (keystorePropertiesFile.exists()) {
+                storeFile rootProject.file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+            }
+        }
+    }
+
     buildTypes {
         release {
+            if (keystorePropertiesFile.exists()) {
+                signingConfig signingConfigs.release
+            }
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

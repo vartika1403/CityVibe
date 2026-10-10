@@ -1,4 +1,4 @@
-package com.cityvibe.app.ui.home
+package com.cityvibe.application.ui.home
 
 import android.app.Activity
 import android.content.Intent
@@ -9,10 +9,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import com.cityvibe.app.data.model.Event
-import com.cityvibe.app.ui.createshow.CreateShowActivity
-import com.cityvibe.app.ui.details.DetailsActivity
-import com.cityvibe.app.util.Resource
+import com.cityvibe.application.data.model.Event
+import com.cityvibe.application.ui.createshow.CreateShowActivity
+import com.cityvibe.application.ui.details.DetailsActivity
+import com.cityvibe.application.ui.enableCityVibeEdgeToEdge
+import com.cityvibe.application.util.Resource
 
 class HomeActivity : ComponentActivity() {
 
@@ -25,6 +26,7 @@ class HomeActivity : ComponentActivity() {
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableCityVibeEdgeToEdge()
         super.onCreate(savedInstanceState)
 
         if (savedInstanceState == null) {

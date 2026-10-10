@@ -1,4 +1,4 @@
-package com.cityvibe.app.ui.home
+package com.cityvibe.application.ui.home
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -7,9 +7,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cityvibe.app.data.model.Event
-import com.cityvibe.app.data.repository.EventRepository
-import com.cityvibe.app.util.Resource
+import com.cityvibe.application.data.model.Event
+import com.cityvibe.application.data.repository.EventRepository
+import com.cityvibe.application.util.Resource
 import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {

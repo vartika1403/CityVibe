@@ -1,6 +1,6 @@
-package com.cityvibe.app.data.remote
+package com.cityvibe.application.data.remote
 
-import com.cityvibe.app.util.Constants
+import com.cityvibe.application.util.Constants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

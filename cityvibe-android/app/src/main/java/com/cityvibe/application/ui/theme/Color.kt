@@ -1,4 +1,4 @@
-package com.cityvibe.app.ui.theme
+package com.cityvibe.application.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

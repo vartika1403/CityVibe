@@ -1,4 +1,4 @@
-package com.cityvibe.app.ui.createshow
+package com.cityvibe.application.ui.createshow
 
 import android.app.Application
 import android.net.Uri
@@ -7,11 +7,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.cityvibe.app.data.model.CreateShowRequest
-import com.cityvibe.app.data.model.Event
-import com.cityvibe.app.data.repository.EventRepository
-import com.cityvibe.app.util.Formatters
-import com.cityvibe.app.util.Resource
+import com.cityvibe.application.data.model.CreateShowRequest
+import com.cityvibe.application.data.model.Event
+import com.cityvibe.application.data.repository.EventRepository
+import com.cityvibe.application.util.Formatters
+import com.cityvibe.application.util.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -24,7 +24,7 @@ import java.util.Locale
 
 /**
  * Holds the Create Your Show form. Fields are Compose-observable (same style as
- * [com.cityvibe.app.ui.home.HomeViewModel.isRefreshing]) so they survive rotation.
+ * [com.cityvibe.application.ui.home.HomeViewModel.isRefreshing]) so they survive rotation.
  *
  * Submitting validates the form and POSTs it to the backend; the result is exposed
  * as [submitState] using the usual Loading / Success / Error wrapper.

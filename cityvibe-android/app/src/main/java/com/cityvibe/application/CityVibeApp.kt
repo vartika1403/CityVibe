@@ -1,4 +1,4 @@
-package com.cityvibe.app
+package com.cityvibe.application
 
 import android.app.Application
 import coil.ImageLoader

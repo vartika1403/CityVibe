@@ -1,4 +1,4 @@
-package com.cityvibe.app.ui.home
+package com.cityvibe.application.ui.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -9,6 +9,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -44,11 +48,11 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import androidx.compose.ui.platform.LocalContext
-import com.cityvibe.app.R
-import com.cityvibe.app.data.model.Event
-import com.cityvibe.app.ui.theme.CityVibeColors
-import com.cityvibe.app.util.Formatters
-import com.cityvibe.app.util.Resource
+import com.cityvibe.application.R
+import com.cityvibe.application.data.model.Event
+import com.cityvibe.application.ui.theme.CityVibeColors
+import com.cityvibe.application.util.Formatters
+import com.cityvibe.application.util.Resource
 
 /** UI label -> shown on the chip. Order matches activity_home.xml. */
 private val CATEGORIES = listOf("All", "Music", "Comedy", "Meetups")
@@ -129,7 +133,8 @@ private fun Header(onCreateShowClick: () -> Unit) {
                     listOf(CityVibeColors.BrandAmber, CityVibeColors.BrandDark)
                 )
             )
-            .padding(start = 20.dp, end = 20.dp, top = 44.dp, bottom = 22.dp)
+            .statusBarsPadding()
+            .padding(start = 20.dp, end = 20.dp, top = 16.dp, bottom = 22.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(
@@ -225,7 +230,13 @@ private fun EventFeed(
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
+        // Bottom padding includes the navigation bar so the last card can scroll clear of it.
+        contentPadding = PaddingValues(
+            start = 16.dp,
+            end = 16.dp,
+            top = 12.dp,
+            bottom = 12.dp + WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding(),
+        ),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         items(events, key = { it.id }) { event ->

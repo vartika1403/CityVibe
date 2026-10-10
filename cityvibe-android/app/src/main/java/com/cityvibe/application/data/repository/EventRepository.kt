@@ -1,8 +1,8 @@
-package com.cityvibe.app.data.repository
+package com.cityvibe.application.data.repository
 
-import com.cityvibe.app.data.model.CreateShowRequest
-import com.cityvibe.app.data.model.Event
-import com.cityvibe.app.data.remote.RetrofitClient
+import com.cityvibe.application.data.model.CreateShowRequest
+import com.cityvibe.application.data.model.Event
+import com.cityvibe.application.data.remote.RetrofitClient
 
 class EventRepository {
 

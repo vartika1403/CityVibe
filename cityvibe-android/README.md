@@ -22,7 +22,7 @@ util/Constants, Resource, Formatters
 ```
 
 ## Backend URL
-Configured in `app/src/main/java/com/cityvibe/app/util/Constants.kt`.
+Configured in `app/src/main/java/com/cityvibe/application/util/Constants.kt`.
 Defaults to the hosted demo API (works on emulator + real devices). To use a
 local Spring Boot instance, switch `BASE_URL` to `http://10.0.2.2:8090/`
 (emulator) — cleartext for `10.0.2.2`/`localhost` is already allowed via
@@ -38,7 +38,7 @@ Command line:
 ```
 
 A pre-built debug APK is included at `dist/CityVibe-debug.apk`
-(package `com.cityvibe.app`).
+(package `com.cityvibe.application`).
 
 ### Tech
 - Kotlin 1.9.22, AGP 8.2.2, Gradle 8.2, compileSdk 34, minSdk 24

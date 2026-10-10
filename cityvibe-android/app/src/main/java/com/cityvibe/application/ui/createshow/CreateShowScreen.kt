@@ -1,4 +1,4 @@
-package com.cityvibe.app.ui.createshow
+package com.cityvibe.application.ui.createshow
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -20,8 +20,11 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -54,9 +57,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.cityvibe.app.R
-import com.cityvibe.app.ui.theme.CityVibeColors
-import com.cityvibe.app.util.Resource
+import com.cityvibe.application.R
+import com.cityvibe.application.ui.theme.CityVibeColors
+import com.cityvibe.application.util.Resource
 import java.util.Calendar
 
 private val FieldBorder = Color(0xFFDDDDE5)
@@ -85,6 +88,7 @@ fun CreateShowScreen(
         modifier = modifier
             .fillMaxSize()
             .background(CityVibeColors.Bg)
+            .imePadding()
     ) {
         Header(onBack = onBack)
 
@@ -204,7 +208,8 @@ private fun Header(onBack: () -> Unit) {
                     listOf(CityVibeColors.BrandAmber, CityVibeColors.BrandDark)
                 )
             )
-            .padding(start = 8.dp, end = 20.dp, top = 40.dp, bottom = 20.dp),
+            .statusBarsPadding()
+            .padding(start = 8.dp, end = 20.dp, top = 12.dp, bottom = 20.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(
@@ -434,7 +439,11 @@ private fun SubmitBar(
     onSubmit: () -> Unit,
 ) {
     Surface(color = CityVibeColors.Surface, shadowElevation = 12.dp) {
-        Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 12.dp)) {
+        Column(
+            modifier = Modifier
+                .navigationBarsPadding()
+                .padding(horizontal = 20.dp, vertical = 12.dp)
+        ) {
             if (errorMessage != null) {
                 Text(
                     text = errorMessage,

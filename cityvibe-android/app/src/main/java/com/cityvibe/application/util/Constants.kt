@@ -1,4 +1,4 @@
-package com.cityvibe.app.util
+package com.cityvibe.application.util
 
 object Constants {
 

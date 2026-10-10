@@ -1,4 +1,4 @@
-package com.cityvibe.app.data.model
+package com.cityvibe.application.data.model
 
 import java.io.Serializable
 
